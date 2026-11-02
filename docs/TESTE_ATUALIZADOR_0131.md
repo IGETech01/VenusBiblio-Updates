@@ -1,12 +1,26 @@
-# Teste de atualização VenusBiblio (0.13.1)
+# Resultado do teste do atualizador VenusBiblio v0.13.1
 
-Este documento descreve um **teste planejado**, não um Release publicado.
+**Teste executado e aprovado em 2 de novembro de 2026.** A versão v0.13.1 está publicada como **pré-lançamento exclusivamente técnico**, não como aplicativo completo.
 
-- Release estável atual: **v0.12.2**.
-- Código local em testes: **0.13.0 / 0.14.0-RC2**.
-- Teste proposto: pré-lançamento **v0.13.1**, com somente um `app/versao.py` sintético, sem código proprietário nem dados pessoais.
-- Os arquivos `manifest-source.json` e `VenusBiblio_Source_0.13.1.zip` devem ser gerados e assinados no Windows com a chave privada Ed25519 original da IGETech. **Nunca publique a chave privada.**
-- O pacote deve ser testado em ambiente descartável, com verificação de assinatura, SHA-256, instalação, restauração e preservação dos dados.
-- Como o aplicativo consulta `/releases/latest`, um pré-lançamento **não** aparecerá como atualização estável automática. O teste do botão integrado exige um Release estável completo posterior, devidamente validado.
+## Escopo
 
-**Não publicar o pacote sintético como versão estável nem aplicá-lo na instalação principal do VenusBiblio.**
+O Release contém somente:
+
+- `manifest-source.json`, assinado com a chave Ed25519 de atualização.
+- `VenusBiblio_Source_0.13.1.zip`, com um `app/versao.py` sintético.
+
+## Resultados efetivamente obtidos
+
+1. Download real dos dois arquivos do Release pelo GitHub, com hashes correspondentes.
+2. Verificação de assinatura Ed25519, tamanho e SHA-256.
+3. Rejeição de manifesto adulterado.
+4. Aplicação isolada em projeto temporário com dados preservados.
+5. Reversão para a versão anterior, sem alterar dados.
+
+**Resultado: 5/5 aprovados.**
+
+O teste **não** exercita o botão da interface nem a consulta `/releases/latest`. Essa rota exclui pré-lançamentos. A estabilidade da v0.14.0 deve ser avaliada em seu próprio Release, que já contém o instalador Windows e o manifesto assinado.
+
+Consulte as [notas do pré-lançamento](releases/v0.13.1.md) e a [versão estável atual](https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.14.0).
+
+**Nunca instalar o pacote sintético na biblioteca principal. Nunca publicar a chave privada.**
