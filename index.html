@@ -3,45 +3,108 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#1d1d22">
-  <meta name="description" content="Atualizações oficiais do VenusBiblio by IGETech: instalador Windows, histórico de versões e notas de lançamento.">
-  <title>VenusBiblio | Atualizações IGETech</title>
+  <meta name="description" content="Baixe o VenusBiblio by IGETech, biblioteca offline para Windows. Releases oficiais, integridade dos instaladores e guia de atualização.">
+  <title>VenusBiblio | Downloads oficiais da IGETech</title>
   <style>
-    :root { color-scheme: dark; font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; background:#1d1d22; color:#f5f4fb; }
-    * { box-sizing: border-box; } body { margin:0; min-height:100vh; padding:42px 20px; }
-    main { width:min(740px, 100%); margin:auto; } h1 { font-size:clamp(2rem,5vw,3rem); margin:.4rem 0; }
-    h1 span { color:#a78bfa; } p { line-height:1.6; color:#c8c4d6; }
-    small { color:#bdb5d6; } .eyebrow { color:#c3a9ff; letter-spacing:.14em; text-transform:uppercase; font-size:.78rem; }
-    .panel { margin-top:28px; background:#28262f; padding:24px; border:1px solid #484054; border-radius:16px; }
-    .button { display:inline-block; margin:14px 0 8px; padding:12px 18px; background:#7851c7; border-radius:10px; color:#fff; text-decoration:none; font-weight:650; }
-    a { color:#c6a9ff; } .button:hover { background:#8c64e0; }
-    ul { padding-left:20px; line-height:1.8; } li { margin-bottom:6px; }
-    footer { margin-top:34px; color:#a9a4b8; font-size:.85rem; }
+    :root { font-family: system-ui,-apple-system,"Segoe UI",sans-serif; color:#f6f3ff; background:#1d1d22; color-scheme:dark }
+    * { box-sizing:border-box } html { scroll-behavior:smooth } body { margin:0; line-height:1.65; background:radial-gradient(ellipse at 80% 0%,#3a2458 0%,transparent 38%),#1d1d22 }
+    a { color:#d1b8ff } a:focus-visible { outline:3px solid #d1b8ff; outline-offset:3px; border-radius:5px }
+    .wrap { width:min(1060px,calc(100% - 36px)); margin:0 auto }
+    header { border-bottom:1px solid #ffffff15; background:#1d1d22bc }
+    .top { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:18px 0; flex-wrap:wrap }
+    .brand { font-size:1.13rem; color:#fff; font-weight:780; letter-spacing:.015em; text-decoration:none } .brand span { color:#b996ff }
+    .links { display:flex; flex-wrap:wrap; gap:20px; font-size:.93rem }
+    .hero { padding:70px 0 36px } .eyebrow { color:#c7a9ff; font-weight:700; font-size:.79rem; letter-spacing:.16em; text-transform:uppercase; margin:0 0 11px }
+    h1 { font-size:clamp(2.3rem,7vw,4.5rem); letter-spacing:-.055em; margin:0; line-height:1.12 } .gradient { background:linear-gradient(95deg,#d7c2ff,#8e63ef); -webkit-background-clip:text; background-clip:text; color:transparent }
+    .intro { font-size:1.13rem; max-width:670px; color:#c9c3d3; margin:24px 0 0 }
+    .panel { border:1px solid #66507e; background:linear-gradient(130deg,#30263c,#25232d 80%); border-radius:22px; padding:clamp(23px,4vw,38px); margin:30px 0 44px; box-shadow:0 18px 50px #0003 }
+    .release-top { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px }
+    .tag { color:#ddcaff; font-size:.78rem; letter-spacing:.10em; text-transform:uppercase; font-weight:750 }
+    .pill { color:#dfcffd; border:1px solid #8963b7; background:#55347766; border-radius:999px; padding:4px 12px; font-size:.8rem }
+    h2 { line-height:1.25; letter-spacing:-.025em } .panel h2 { font-size:clamp(1.7rem,4vw,2.4rem); margin:12px 0 }
+    .muted { color:#c4bdcf }
+    .actions { display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin-top:24px }
+    .primary { display:inline-flex; justify-content:center; align-items:center; padding:13px 24px; background:#9366e8; color:#16101d; border-radius:12px; font-weight:790; text-decoration:none; transition:background .2s }
+    .primary:hover { background:#b58dff }
+    .secondary { display:inline-block; padding:11px 4px }
+    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:15px; margin:18px 0 42px }
+    .tile { border-radius:17px; background:#292631; border:1px solid #474053; padding:20px }
+    .tile h3 { margin:0 0 8px; font-size:1.02rem } .tile p { margin:0; color:#c2bccb; font-size:.94rem }
+    .section { margin:40px 0 } .section h2 { font-size:1.52rem } .section p,.section li { color:#ccc5d5 }
+    ol { padding-left:22px } li { padding:5px 0 }
+    .notice { padding:18px 21px; background:#2a2634; border-left:4px solid #a17be6; border-radius:9px }
+    footer { padding:27px 0 40px; border-top:1px solid #ffffff20; color:#b9b0c4; font-size:.85rem }
+    @media(max-width:700px) { .hero {padding-top:45px} .grid {grid-template-columns:1fr} .top {align-items:flex-start} .links {gap:14px} }
+    @media(prefers-reduced-motion:reduce) { html {scroll-behavior:auto} .primary {transition:none} }
   </style>
 </head>
 <body>
-  <main>
-    <div class="eyebrow">IGETech · Canal oficial de atualizações</div>
-    <h1>Venus<span>Biblio</span></h1>
-    <p>Sua biblioteca digital offline para Windows, com leitura de PDF, EPUB, mangás e HQs.</p>
-    <section class="panel">
-      <small>VERSÃO ESTÁVEL ATUAL</small>
-      <h2>VenusBiblio v0.14.1</h2>
-      <p>Instalador completo para Windows. Atualização distribuída pelo GitHub com manifesto assinado e verificação de integridade.</p>
-      <a class="button" href="https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.14.1">Ver atualização v0.14.1</a>
-      <p><small>Antes de atualizar, feche o aplicativo e mantenha um backup dos seus dados.</small></p>
+  <header><nav class="wrap top" aria-label="Navegação principal">
+    <a class="brand" href="#inicio">IGE<span>Tech</span> / VenusBiblio</a>
+    <div class="links"><a href="#baixar">Download</a><a href="#atualizar">Atualizar</a><a href="https://github.com/IGETech01/VenusBiblio-Updates">GitHub</a></div>
+  </nav></header>
+  <main id="inicio" class="wrap">
+    <section class="hero">
+      <p class="eyebrow">Biblioteca digital offline para Windows</p>
+      <h1>Seu acervo, <span class="gradient">seu espaço.</span></h1>
+      <p class="intro">Organize livros, leia PDFs e EPUBs, acompanhe mangás e HQs em CBZ e personalize sua experiência de leitura. Distribuição oficial pela IGETech.</p>
     </section>
-    <section class="panel">
-      <h2>Histórico e próximas versões</h2>
-      <ul>
-        <li><a href="https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.12.2">v0.12.2</a>: versão estável anterior</li>
-        <li><a href="https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.13.1">v0.13.1</a>: apenas teste técnico, não instalar</li>
-        <li><a href="https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.14.0">v0.14.0</a>: versão estável anterior</li>
-      </ul>
-      <p>Esta atualização melhora desempenho, refina a interface e prepara internamente recursos para uma futura versão Android. <strong>Nenhum APK oficial está disponível.</strong></p>
-      <a href="https://github.com/IGETech01/VenusBiblio-Updates/blob/main/docs/RELEASES_E_ATUALIZACOES.md">Leia a política de lançamentos</a>
+    <section class="panel" id="baixar" aria-labelledby="release-heading">
+      <div class="release-top"><span class="tag">Última versão estável</span><span class="pill">Windows</span></div>
+      <h2 id="release-heading">VenusBiblio <span id="versao">v0.14.1</span></h2>
+      <p class="muted" id="status">Instalador oficial disponível no GitHub, com manifesto de atualização assinado.</p>
+      <div class="actions">
+        <a class="primary" id="download" href="https://github.com/IGETech01/VenusBiblio-Updates/releases/latest">Baixar VenusBiblio</a>
+        <a class="secondary" id="notas" href="https://github.com/IGETech01/VenusBiblio-Updates/releases/latest">Notas da versão</a>
+      </div>
+      <p class="muted"><small>Feche o aplicativo antes de atualizar e mantenha uma cópia de segurança dos seus dados. Nenhum APK Android está disponível.</small></p>
     </section>
-    <footer>© IGETech. Distribuição somente pelos Releases oficiais do GitHub.</footer>
+    <section aria-label="Destaques" class="grid">
+      <article class="tile"><h3>📚 Leitura offline</h3><p>PDF, EPUB, mangás e histórias em quadrinhos em CBZ.</p></article>
+      <article class="tile"><h3>🎨 Personalização</h3><p>Organização do acervo, preferências e temas do leitor.</p></article>
+      <article class="tile"><h3>🔐 Atualizações verificadas</h3><p>Assinatura Ed25519 e conferência de integridade dos instaladores compatíveis.</p></article>
+    </section>
+    <section class="section" id="atualizar">
+      <h2>Como atualizar</h2>
+      <ol>
+        <li><strong>Versões com atualizador integrado:</strong> acesse <strong>Atualizações → Verificar atualizações</strong>. Se houver falha, use o instalador oficial acima.</li>
+        <li><strong>Versões antigas sem atualizador, incluindo v0.12.x:</strong> faça a atualização <strong>manualmente</strong> pelo instalador mais recente. Aquelas versões não recebem atualização automática pelo GitHub.</li>
+        <li>Abra a nova versão e confira seus livros, contas e preferências.</li>
+      </ol>
+      <div class="notice">O próximo lançamento público planejado é a <strong>v0.15.0</strong>. As melhorias intermediárias estão em desenvolvimento interno e não são disponibilizadas como Releases.</div>
+    </section>
+    <section class="section" aria-labelledby="links-heading">
+      <h2 id="links-heading">Transparência e suporte técnico</h2>
+      <p>Consulte <a href="https://github.com/IGETech01/VenusBiblio-Updates/blob/main/docs/MIGRACAO_VERSOES_ANTIGAS.md">o guia de migração</a>, <a href="https://github.com/IGETech01/VenusBiblio-Updates/blob/main/docs/RELEASES_E_ATUALIZACOES.md">a política de atualizações</a> e <a href="https://github.com/IGETech01/VenusBiblio-Updates/actions/workflows/validar-release.yml">a validação de integridade</a>. A preparação Android ainda é experimental e não há data definida.</p>
+    </section>
   </main>
+  <footer><div class="wrap">© IGETech · VenusBiblio. Arquivos oficiais hospedados no GitHub Releases.</div></footer>
+  <script>
+    // O site apenas consulta a API pública do GitHub. Não modifica releases nem assets.
+    (async function () {
+      try {
+        const res = await fetch('https://api.github.com/repos/IGETech01/VenusBiblio-Updates/releases/latest', {cache:'no-store'});
+        if (!res.ok) return;
+        const data = await res.json();
+        if (!/^v\d+\.\d+\.\d+$/.test(data.tag_name) || data.draft || data.prerelease) return;
+        const base = 'https://github.com/IGETech01/VenusBiblio-Updates/releases/';
+        const releaseUrl = base + 'tag/' + data.tag_name;
+        const expected = 'VenusBiblio_Setup_' + data.tag_name.slice(1) + '.exe';
+        const asset = Array.isArray(data.assets) ? data.assets.find(a =>
+          a.name === expected &&
+          typeof a.browser_download_url === 'string' &&
+          a.browser_download_url.startsWith(base + 'download/' + data.tag_name + '/')
+        ) : null;
+        document.getElementById('versao').textContent = data.tag_name;
+        document.getElementById('notas').href = releaseUrl;
+        document.getElementById('download').href = asset ? asset.browser_download_url : releaseUrl;
+        document.getElementById('status').textContent = asset ?
+          'Instalador oficial Windows disponível. Consulte as notas e verifique a integridade da versão.' :
+          'Confira os arquivos disponíveis na página oficial do lançamento.';
+      } catch (_) { /* Exibe links estáveis caso a API esteja indisponível. */ }
+    })();
+  </script>
 </body>
 </html>
