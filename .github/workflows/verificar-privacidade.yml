@@ -1,0 +1,72 @@
+name: Conferir conteudo publico do VenusBiblio
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  privacidade:
+    name: Verificar arquivos publicados
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obter arquivos publicados
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Conferir arquivos e possiveis credenciais
+        shell: bash
+        run: |
+          python - <<'PY'
+          import pathlib
+          import re
+          import subprocess
+          import sys
+
+          allowed = {
+              ".github/workflows/sincronizar-notas.yml",
+              ".github/workflows/validar-release.yml",
+              ".github/workflows/verificar-privacidade.yml",
+              "README.md",
+              "index.html",
+              "docs/MIGRACAO_VERSOES_ANTIGAS.md",
+              "docs/RELEASES_E_ATUALIZACOES.md",
+              "scripts/verificar_assets_release.py",
+          }
+          release_notes = re.compile(r"docs/releases/v\d+\.\d+\.\d+\.md")
+          patterns = (
+              re.compile(rb"-----BEGIN (?:OPENSSH |RSA |EC |DSA |ED25519 )?PRIVATE KEY-----", re.I),
+              re.compile(rb"(?:gh[pousr]_[A-Za-z0-9_]{20,}|github_pat_[A-Za-z0-9_]{20,}|sk-[A-Za-z0-9_-]{25,}|AKIA[0-9A-Z]{16})"),
+              re.compile(rb"[A-Za-z]:\\Users\\", re.I),
+          )
+          paths = [
+              p.decode("utf-8", errors="replace")
+              for p in subprocess.check_output(["git", "ls-files", "-z"]).split(b"\0")
+              if p
+          ]
+          blocked = 0
+          suspect = 0
+          for name in paths:
+              if name not in allowed and not release_notes.fullmatch(name):
+                  blocked += 1
+                  continue
+              path = pathlib.Path(name)
+              if not path.is_file() or path.stat().st_size > 1024 * 1024:
+                  blocked += 1
+                  continue
+              data = path.read_bytes()
+              if any(pattern.search(data) for pattern in patterns):
+                  suspect += 1
+
+          if blocked or suspect:
+              print(f"REVISAO NECESSARIA: {blocked} arquivos fora da lista publica e {suspect} com padroes sensiveis.")
+              print("Revise localmente os arquivos antes de publicar. Nenhum conteudo sensivel foi exibido aqui.")
+              sys.exit(1)
+
+          print(f"CONFERENCIA PUBLICA APROVADA: {len(paths)} arquivos permitidos.")
+          PY
