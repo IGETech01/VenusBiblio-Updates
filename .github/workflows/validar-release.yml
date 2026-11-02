@@ -6,9 +6,9 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: 'Tag do Release para verificar (ex.: v0.12.2)'
+        description: 'Tag do Release para verificar (ex.: v0.14.1)'
         required: true
-        default: 'v0.12.2'
+        default: 'v0.14.1'
 
 permissions:
   contents: read
