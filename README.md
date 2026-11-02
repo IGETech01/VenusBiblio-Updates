@@ -4,9 +4,9 @@ Canal público de distribuição do **VenusBiblio**, biblioteca digital para Win
 
 ## Versão estável mais recente
 
-**[VenusBiblio v0.14.0](https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.14.0)**, publicada em **2 de novembro de 2026**.
+**[VenusBiblio v0.14.1](https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.14.1)**, publicada em **2 de novembro de 2026**.
 
-- **Windows:** baixe `VenusBiblio_Setup_0.14.0.exe`.
+- **Windows:** baixe `VenusBiblio_Setup_0.14.1.exe`.
 - **Atualização integrada:** abra **Atualizações → Verificar atualizações** no programa; se o instalador não for oferecido, use o arquivo oficial do Release.
 - **Segurança:** o `manifest.json` é assinado com Ed25519 e vincula a versão ao tamanho e SHA-256 do instalador.
 
@@ -14,10 +14,10 @@ Canal público de distribuição do **VenusBiblio**, biblioteca digital para Win
 
 | Versão | Tipo | Situação |
 |---|---|---|
-| **[v0.14.0](https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.14.0)** | Estável Windows | Publicada, instalador completo |
+| **[v0.14.1](https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.14.1)** | **Estável Windows** | Publicada: desempenho, correções, interface refinada e preparação interna Android |
+| **[v0.14.0](https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.14.0)** | Estável anterior | Substituída pela v0.14.1 |
 | **[v0.13.1](https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.13.1)** | Pré-lançamento técnico | Teste sintético do atualizador. **Não instalar em produção** |
-| **[v0.12.2](https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.12.2)** | Estável anterior | Substituída pela v0.14.0 |
-| **v0.14.1** | Desenvolvimento e testes locais | **Ainda não publicada**; desempenho, refinamentos visuais e preparação interna para Android |
+| **[v0.12.2](https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.12.2)** | Estável anterior | Instalador Windows histórico |
 
 Veja o histórico e as notas completas em [docs/releases](docs/releases) e [a política de lançamentos](docs/RELEASES_E_ATUALIZACOES.md).
 
@@ -35,7 +35,7 @@ Veja o histórico e as notas completas em [docs/releases](docs/releases) e [a po
 
 O Release estável Windows utiliza `manifest.json` e `VenusBiblio_Setup_X.Y.Z.exe`. Pré-lançamentos técnicos podem utilizar `manifest-source.json` e um ZIP sintético, sem serem instaladores do aplicativo.
 
-O workflow [Validar integridade dos Releases](.github/workflows/validar-release.yml) verifica assinatura Ed25519, tamanho e SHA-256. O evento de publicação da v0.14.0 foi validado com sucesso. A assinatura de atualização não é um certificado Authenticode do Windows.
+O workflow [Validar integridade dos Releases](.github/workflows/validar-release.yml) verifica assinatura Ed25519, tamanho e SHA-256. O evento de publicação da v0.14.1 foi validado com sucesso. O teste completo do botão integrado da v0.14.0 para a v0.14.1 permanece pendente. A assinatura de atualização não é um certificado Authenticode do Windows.
 
 ## Descrições sempre sincronizadas
 
