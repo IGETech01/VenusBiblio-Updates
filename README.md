@@ -1,28 +1,46 @@
-# VenusBiblio | Atualizações oficiais IGETech
+# VenusBiblio by IGETech | Atualizações oficiais
 
-Este repositório distribui atualizações do **VenusBiblio by IGETech**.
+Canal público de distribuição do **VenusBiblio**, biblioteca digital para Windows com leitura offline de livros, mangás e HQs.
 
-## Estado atual
+## Versão estável mais recente
 
-- **Release estável publicado:** [v0.12.2](https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.12.2).
-- **Desenvolvimento local:** v0.13.0 com prévias v0.14.0. Essas prévias ainda **não** são versões estáveis publicadas.
-- **Próximo teste:** pré-lançamento sintético v0.13.1 para validar assinatura, download, instalação e reversão. Esse teste **não** é uma atualização funcional do aplicativo.
+**[VenusBiblio v0.14.0](https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.14.0)**, publicada em **2 de novembro de 2026**.
 
-## Como são entregues as atualizações
+- **Windows:** baixe `VenusBiblio_Setup_0.14.0.exe`.
+- **Atualização integrada:** abra **Atualizações → Verificar atualizações** no programa; se o instalador não for oferecido, use o arquivo oficial do Release.
+- **Segurança:** o `manifest.json` é assinado com Ed25519 e vincula a versão ao tamanho e SHA-256 do instalador.
 
-- Windows instalado: `manifest.json` + `VenusBiblio_Setup_X.Y.Z.exe`.
-- Código-fonte em testes: `manifest-source.json` + `VenusBiblio_Source_X.Y.Z.zip`.
-- Os manifestos são assinados com a chave privada Ed25519 da IGETech e permitem verificar integridade por SHA-256.
-- **A chave privada nunca deve ser enviada a este repositório.**
+### Histórico de versões
 
-## Verificação automatizada
+| Versão | Tipo | Situação |
+|---|---|---|
+| **[v0.14.0](https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.14.0)** | Estável Windows | Publicada, instalador completo |
+| **[v0.13.1](https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.13.1)** | Pré-lançamento técnico | Teste sintético do atualizador. **Não instalar em produção** |
+| **[v0.12.2](https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.12.2)** | Estável anterior | Substituída pela v0.14.0 |
+| **v0.14.1** | Desenvolvimento e testes locais | **Ainda não publicada**; desempenho, refinamentos visuais e preparação interna para Android |
 
-O workflow [Validar integridade dos Releases](.github/workflows/validar-release.yml) usa o verificador [scripts/verificar_assets_release.py](scripts/verificar_assets_release.py) para conferir os assets de Releases publicados. As verificações no GitHub são complementares aos testes do aplicativo no Windows.
+Veja o histórico e as notas completas em [docs/releases](docs/releases) e [a política de lançamentos](docs/RELEASES_E_ATUALIZACOES.md).
 
-Leia [o plano de teste do atualizador](docs/TESTE_ATUALIZADOR_0131.md). Os testes devem usar um projeto descartável; não instale pacotes sintéticos no VenusBiblio principal.
+## Recursos do aplicativo
 
-## Segurança e publicação
+- Biblioteca de leitura offline: **PDF, EPUB, mangás e HQs em CBZ**.
+- Organização de acervo e personalização da leitura.
+- **Workshop Cliente** e distribuição de conteúdo disponível.
+- Interface escura, detalhes roxos e temas opcionais.
+- Sistema de atualização pelo GitHub, com verificação criptográfica e mecanismo de recuperação.
 
-- Não publique código do **Workshop Admin**, bancos de dados locais, bibliotecas particulares, backups ou credenciais.
-- Nunca apresente uma versão sintética como atualização estável.
-- Um Release só deve ser marcado como estável após compilação, assinatura e teste funcional do atualizador no Windows.
+**Android:** há preparação técnica interna em desenvolvimento; **não existe APK oficial publicado**.
+
+## Arquivos e integridade
+
+O Release estável Windows utiliza `manifest.json` e `VenusBiblio_Setup_X.Y.Z.exe`. Pré-lançamentos técnicos podem utilizar `manifest-source.json` e um ZIP sintético, sem serem instaladores do aplicativo.
+
+O workflow [Validar integridade dos Releases](.github/workflows/validar-release.yml) verifica assinatura Ed25519, tamanho e SHA-256. O evento de publicação da v0.14.0 foi validado com sucesso. A assinatura de atualização não é um certificado Authenticode do Windows.
+
+## Descrições sempre sincronizadas
+
+As notas oficiais de cada versão ficam em [docs/releases](docs/releases). O workflow de sincronização e o script [sincronizar_notas_releases.ps1](scripts/sincronizar_notas_releases.ps1) atualizam as **descrições dos Releases**, sem alterar instaladores, tags ou canais.
+
+## Segurança
+
+Este repositório **não** distribui código-fonte privado, chaves de assinatura, dados de usuários, bibliotecas particulares ou ferramentas exclusivas do Workshop Admin. A chave privada de atualização IGETech deve permanecer no computador confiável da editora.
