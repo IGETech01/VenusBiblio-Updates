@@ -19,8 +19,8 @@ O Release contém somente:
 
 **Resultado: 5/5 aprovados.**
 
-O teste **não** exercita o botão da interface nem a consulta `/releases/latest`. Essa rota exclui pré-lançamentos. A estabilidade da v0.14.0 deve ser avaliada em seu próprio Release, que já contém o instalador Windows e o manifesto assinado.
+O teste **não** exercita o botão da interface nem a consulta `/releases/latest`. Essa rota exclui pré-lançamentos. As versões estáveis Windows posteriores possuem instalador e manifesto assinados, mas seus fluxos de atualização pela interface exigem validação funcional própria.
 
-Consulte as [notas do pré-lançamento](releases/v0.13.1.md) e a [versão estável atual](https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.14.0).
+Consulte as [notas do pré-lançamento](releases/v0.13.1.md) e a [versão estável atual](https://github.com/IGETech01/VenusBiblio-Updates/releases/latest).
 
 **Nunca instalar o pacote sintético na biblioteca principal. Nunca publicar a chave privada.**
