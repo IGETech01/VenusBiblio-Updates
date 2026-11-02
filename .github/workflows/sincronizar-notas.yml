@@ -1,0 +1,53 @@
+name: Sincronizar descricoes dos Releases VenusBiblio
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/releases/v*.md'
+      - '.github/workflows/sincronizar-notas.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: venusbiblio-release-descriptions
+  cancel-in-progress: false
+
+jobs:
+  notas:
+    name: Atualizar descricoes dos Releases
+    runs-on: ubuntu-latest
+    steps:
+      - name: Carregar notas versionadas
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+
+      - name: Sincronizar corpos dos Releases existentes
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: IGETech01/VenusBiblio-Updates
+        shell: bash
+        run: |
+          set -euo pipefail
+          for file in docs/releases/v*.md; do
+            if [[ ! -f "$file" ]]; then
+              echo "::error::Nenhuma nota oficial encontrada."
+              exit 1
+            fi
+            tag="$(basename "$file" .md)"
+            if [[ ! "$tag" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+              echo "::error::Nome de versao invalido em $file"
+              exit 1
+            fi
+            if gh release view "$tag" --repo "$REPO" --json tagName >/dev/null 2>&1; then
+              echo "Atualizando descricao do Release $tag"
+              gh release edit "$tag" --repo "$REPO" --notes-file "$file"
+            else
+              echo "Release $tag ainda nao existe, ignorando."
+            fi
+          done
+          echo "Descricoes sincronizadas. Nenhuma tag ou asset foi modificado."
