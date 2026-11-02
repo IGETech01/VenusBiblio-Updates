@@ -6,6 +6,8 @@ Workshop Admin, código proprietário ou chaves.
 from __future__ import annotations
 
 import argparse
+import base64
+import hmac
 from dataclasses import replace
 import hashlib
 from pathlib import Path
@@ -14,9 +16,46 @@ import subprocess
 import sys
 import zipfile
 
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
+
 REPO = "IGETech01/VenusBiblio-Updates"
 VERSAO_TESTE = "0.13.1"
 BASE_ESPERADA = "0.13.0"
+
+
+def _chave_corresponde(chave: Path, publica_b64: str) -> bool:
+    """Compara apenas a chave publica derivada, sem revelar a privada."""
+    try:
+        privada = serialization.load_pem_private_key(chave.read_bytes(), password=None)
+        if not isinstance(privada, Ed25519PrivateKey):
+            return False
+        pub = privada.public_key().public_bytes(
+            serialization.Encoding.Raw, serialization.PublicFormat.Raw
+        )
+        return hmac.compare_digest(pub, base64.b64decode(publica_b64, validate=True))
+    except (ValueError, TypeError, OSError):
+        return False
+
+
+def encontrar_chave(projeto: Path, pasta: Path) -> Path:
+    """Seleciona somente uma chave confiavel pelo atualizador instalado."""
+    if not pasta.is_dir():
+        raise FileNotFoundError("Pasta das chaves nao encontrada.")
+    sys.path.insert(0, str(projeto.resolve()))
+    import atualizador_core as core
+
+    for candidato in sorted(pasta.rglob("*")):
+        if (candidato.is_file()
+                and candidato.suffix.lower() in {".pem", ".key", ".ed25519"}
+                and _chave_corresponde(candidato, core.CHAVE_PUBLICA_B64)):
+            print("Chave de atualizacao compativel encontrada; conteudo preservado.")
+            return candidato
+    raise ValueError(
+        "Nenhuma chave privada Ed25519 nesta pasta corresponde ao VenusBiblio. "
+        "Verifique backups da chave original; nao substitua a chave publica do app."
+    )
+
 
 
 def preparar(projeto: Path, chave: Path, saida: Path) -> tuple[Path, Path]:
@@ -35,6 +74,11 @@ def preparar(projeto: Path, chave: Path, saida: Path) -> tuple[Path, Path]:
     import publicar_fonte_igetech as publicador
     import atualizador_core as core
 
+    if not _chave_corresponde(chave, core.CHAVE_PUBLICA_B64):
+        raise ValueError(
+            "A chave selecionada nao corresponde ao VenusBiblio instalado. "
+            "Use --diretorio-chaves para procurar a chave correta, sem enfraquecer a verificacao."
+        )
     if gerador.ler_versao(projeto / "versao.py") != BASE_ESPERADA:
         raise ValueError(f"A base do teste precisa ser {BASE_ESPERADA}.")
     if saida.exists() and any(saida.iterdir()):
@@ -68,12 +112,19 @@ def preparar(projeto: Path, chave: Path, saida: Path) -> tuple[Path, Path]:
 def main() -> int:
     p = argparse.ArgumentParser()
     p.add_argument("--projeto", default=str(Path.cwd()))
-    p.add_argument("--chave", required=True, help="Caminho local da chave privada IGETech")
+    grupo = p.add_mutually_exclusive_group(required=True)
+    grupo.add_argument("--chave", help="Caminho da chave Ed25519 correta")
+    grupo.add_argument("--diretorio-chaves", help="Pasta para selecionar chave compativel")
     p.add_argument("--saida", required=True)
     p.add_argument("--publicar", action="store_true")
     args = p.parse_args()
 
-    manifesto, pacote = preparar(Path(args.projeto), Path(args.chave), Path(args.saida))
+    projeto = Path(args.projeto)
+    chave = (
+        encontrar_chave(projeto, Path(args.diretorio_chaves))
+        if args.diretorio_chaves else Path(args.chave)
+    )
+    manifesto, pacote = preparar(projeto, chave, Path(args.saida))
     print("Pacote assinado preparado:", manifesto, pacote, sep="\n")
     print("Código privado e projeto original não foram alterados.")
 
