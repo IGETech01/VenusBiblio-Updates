@@ -103,3 +103,43 @@ jobs:
               sys.exit(1)
           print(f"CONFERENCIA PUBLICA APROVADA: {len(paths)} arquivos, incluindo {image_count} imagens aprovadas.")
           PY
+
+      - name: Conferir links e versao publica de reserva
+        shell: bash
+        run: |
+          python - <<'PY'
+          import pathlib
+          import re
+          import sys
+          raiz = pathlib.Path('.')
+          notas = list((raiz / 'docs/releases').glob('v*.md'))
+          versoes = []
+          for item in notas:
+              match = re.fullmatch(r'v(\d+)\.(\d+)\.(\d+)\.md', item.name)
+              if match:
+                  versoes.append((tuple(map(int, match.groups())), item))
+          if not versoes:
+              print('Nenhuma nota de versao reconhecida.')
+              sys.exit(1)
+          atual, arquivo_nota = max(versoes, key=lambda item: item[0])
+          versao = '.'.join(map(str, atual))
+          instalador = f'VenusBiblio_Setup_{versao}.exe'
+          falhas = []
+          for nome in ('index.html', 'baixar/index.html'):
+              html = (raiz / nome).read_text(encoding='utf-8')
+              if instalador not in html or f'/tag/v{versao}' not in html:
+                  falhas.append(nome + ': link de reserva desatualizado')
+          readme = (raiz / 'README.md').read_text(encoding='utf-8')
+          if instalador not in readme or f'/tag/v{versao}' not in readme:
+              falhas.append('README.md: link de versao desatualizado')
+          if not (raiz / 'demo/index.html').is_file():
+              falhas.append('demo/index.html: pagina ausente')
+          for img in re.findall(r'(?:\.\./)?(?:demo/)?imagens/[\w.-]+\.png', (raiz / 'demo/index.html').read_text(encoding='utf-8')):
+              rel = img.removeprefix('../').removeprefix('demo/')
+              if not (raiz / 'demo' / rel).is_file():
+                  falhas.append('Demo: imagem ausente ' + rel)
+          if falhas:
+              for erro in falhas: print('VERIFICAR:', erro)
+              sys.exit(1)
+          print(f'LINKS PUBLICOS APROVADOS: v{versao}; paginas e imagens presentes.')
+          PY
