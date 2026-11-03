@@ -25,6 +25,7 @@ jobs:
           python - <<'PY'
           import pathlib
           import re
+          import struct
           import subprocess
           import sys
 
@@ -34,12 +35,29 @@ jobs:
               ".github/workflows/verificar-privacidade.yml",
               "README.md",
               "index.html",
+              "baixar/index.html",
+              "demo/index.html",
               "docs/MIGRACAO_VERSOES_ANTIGAS.md",
               "docs/RELEASES_E_ATUALIZACOES.md",
               "scripts/verificar_assets_release.py",
           }
+          public_images = {
+              "demo/imagens/01_login.png",
+              "demo/imagens/02_visao_geral.png",
+              "demo/imagens/03_estante_grade.png",
+              "demo/imagens/04_estante_carrossel.png",
+              "demo/imagens/05_meu_acervo.png",
+              "demo/imagens/06_busca.png",
+              "demo/imagens/07_workshop_vitrine.png",
+              "demo/imagens/08_workshop_lista.png",
+              "demo/imagens/09_perfil_temas.png",
+              "demo/imagens/12_leitor_pdf.png",
+              "demo/imagens/13_leitor_epub.png",
+              "demo/imagens/14_leitor_hq.png",
+              "demo/imagens/15_leitor_manga.png",
+          }
           release_notes = re.compile(r"docs/releases/v\d+\.\d+\.\d+\.md")
-          patterns = (
+          sensitive = (
               re.compile(rb"-----BEGIN (?:OPENSSH |RSA |EC |DSA |ED25519 )?PRIVATE KEY-----", re.I),
               re.compile(rb"(?:gh[pousr]_[A-Za-z0-9_]{20,}|github_pat_[A-Za-z0-9_]{20,}|sk-[A-Za-z0-9_-]{25,}|AKIA[0-9A-Z]{16})"),
               re.compile(rb"[A-Za-z]:\\Users\\", re.I),
@@ -51,22 +69,37 @@ jobs:
           ]
           blocked = 0
           suspect = 0
+          image_count = 0
           for name in paths:
+              path = pathlib.Path(name)
+              if name in public_images:
+                  image_count += 1
+                  if not path.is_file() or not 100 <= path.stat().st_size <= 1024 * 1024:
+                      blocked += 1
+                      continue
+                  with path.open("rb") as f:
+                      header = f.read(24)
+                  if header[:16] != b"\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR":
+                      blocked += 1
+                      continue
+                  w, h = struct.unpack(">II", header[16:24])
+                  if not (200 <= w <= 2400 and 150 <= h <= 1500):
+                      blocked += 1
+                  continue
               if name not in allowed and not release_notes.fullmatch(name):
                   blocked += 1
                   continue
-              path = pathlib.Path(name)
               if not path.is_file() or path.stat().st_size > 1024 * 1024:
                   blocked += 1
                   continue
               data = path.read_bytes()
-              if any(pattern.search(data) for pattern in patterns):
+              if any(pattern.search(data) for pattern in sensitive):
                   suspect += 1
-
+          if image_count != len(public_images):
+              blocked += 1
           if blocked or suspect:
-              print(f"REVISAO NECESSARIA: {blocked} arquivos fora da lista publica e {suspect} com padroes sensiveis.")
-              print("Revise localmente os arquivos antes de publicar. Nenhum conteudo sensivel foi exibido aqui.")
+              print(f"REVISAO NECESSARIA: {blocked} arquivos/registros fora da lista publica e {suspect} com padroes sensiveis.")
+              print("Revise os arquivos antes de publicar. Nenhum conteudo sensivel foi exibido aqui.")
               sys.exit(1)
-
-          print(f"CONFERENCIA PUBLICA APROVADA: {len(paths)} arquivos permitidos.")
+          print(f"CONFERENCIA PUBLICA APROVADA: {len(paths)} arquivos, incluindo {image_count} imagens aprovadas.")
           PY
