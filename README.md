@@ -6,18 +6,18 @@
 
 **[⬇️ Baixar a versão estável mais recente](https://github.com/IGETech01/VenusBiblio-Updates/releases/latest)**
 
-- **Versão disponível:** [v0.14.1](https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.14.1).
+- **Versão disponível:** [v0.15.0](https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.15.0).
 - **Sistema:** Windows.
-- **Instalador direto:** [VenusBiblio_Setup_0.14.1.exe](https://github.com/IGETech01/VenusBiblio-Updates/releases/download/v0.14.1/VenusBiblio_Setup_0.14.1.exe).
+- **Instalador direto:** [VenusBiblio_Setup_0.15.0.exe](https://github.com/IGETech01/VenusBiblio-Updates/releases/download/v0.15.0/VenusBiblio_Setup_0.15.0.exe).
 - **Página oficial:** [Downloads IGETech](https://igetech01.github.io/VenusBiblio-Updates/).
 
 ## Principais recursos
 
 - Leitura de **PDF, EPUB, mangás e histórias em quadrinhos (CBZ)**.
 - Biblioteca offline com capas, organização e pesquisa.
-- Ajustes de aparência e preferências de leitura.
-- **Workshop Cliente** para os recursos disponibilizados aos leitores.
-- Verificação de atualizações pelo GitHub nas versões compatíveis.
+- **AuroraUI 1.3.0:** 14 temas, interface refinada e preferências de leitura.
+- **Workshop Cliente** com catálogo público pelo GitHub (coleções disponíveis quando publicadas).
+- **Atualizador integrado** nas versões compatíveis, com assinatura Ed25519, SHA-256 e proteção contra downgrade.
 
 ## Como instalar ou atualizar
 
@@ -32,7 +32,7 @@
 
 ## Versões e segurança
 
-A [v0.14.1](docs/releases/v0.14.1.md) é a versão estável atual; a [v0.14.0](docs/releases/v0.14.0.md) permanece disponível como versão anterior.
+A [v0.15.0](docs/releases/v0.15.0.md) é a versão estável atual. As versões [v0.14.1](docs/releases/v0.14.1.md) e [v0.14.0](docs/releases/v0.14.0.md) permanecem disponíveis no histórico.
 
 Os instaladores oficiais são acompanhados de manifesto assinado digitalmente, e a [validação automática de integridade](.github/workflows/validar-release.yml) confere assinatura, tamanho e SHA-256 dos arquivos de distribuição.
 
