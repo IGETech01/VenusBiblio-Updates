@@ -43,7 +43,7 @@
 <body>
   <header><nav class="wrap top" aria-label="Navegação principal">
     <a class="brand" href="#inicio">IGE<span>Tech</span> / VenusBiblio</a>
-    <div class="links"><a href="#baixar">Download</a><a href="#atualizar">Atualizar</a><a href="https://github.com/IGETech01/VenusBiblio-Updates/releases/latest">Última versão</a></div>
+    <div class="links"><a href="demo/">Ver demonstracao</a><a href="#baixar">Download</a><a href="#atualizar">Atualizar</a><a href="https://github.com/IGETech01/VenusBiblio-Updates/releases/latest">Última versão</a></div>
   </nav></header>
   <main id="inicio" class="wrap">
     <section class="hero">
@@ -54,7 +54,7 @@
     <section class="panel" id="baixar" aria-labelledby="release-heading">
       <div class="release-top"><span class="tag">Última versão estável</span><span class="pill">Windows</span></div>
       <h2 id="release-heading">VenusBiblio <span id="versao">v0.15.0</span></h2>
-      <p class="muted" id="status">Instalador v0.15.0 disponível no GitHub, com manifesto de atualização assinado.</p>
+      <p class="muted" id="status">Instalador para Windows disponível para download.</p>
       <div class="actions">
         <a class="primary" id="download" href="https://github.com/IGETech01/VenusBiblio-Updates/releases/download/v0.15.0/VenusBiblio_Setup_0.15.0.exe">Baixar VenusBiblio</a>
         <a class="secondary" id="notas" href="https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.15.0">Notas da versão</a>
@@ -64,7 +64,7 @@
     <section aria-label="Destaques" class="grid">
       <article class="tile"><h3>📚 Leitura offline</h3><p>PDF, EPUB, mangás e histórias em quadrinhos em CBZ.</p></article>
       <article class="tile"><h3>🎨 AuroraUI 1.3.0</h3><p>14 temas visuais, personalização da leitura e organização do acervo.</p></article>
-      <article class="tile"><h3>🔐 Atualizações verificadas</h3><p>Assinatura Ed25519 e conferência de integridade dos instaladores compatíveis.</p></article>
+      <article class="tile"><h3>🔐 Atualizações verificadas</h3><p>Baixe e atualize com segurança usando os arquivos oficiais.</p></article>
     </section>
     <section class="section" id="atualizar">
       <h2>Como atualizar</h2>
@@ -76,8 +76,8 @@
       <div class="notice">Para sua segurança, utilize somente o <strong>instalador oficial da última versão estável</strong>. Versões antigas sem atualizador integrado exigem instalação manual.</div>
     </section>
     <section class="section" aria-labelledby="links-heading">
-      <h2 id="links-heading">Transparência e suporte técnico</h2>
-      <p>Consulte <a href="https://github.com/IGETech01/VenusBiblio-Updates/blob/main/docs/MIGRACAO_VERSOES_ANTIGAS.md">o guia de migração</a>, <a href="https://github.com/IGETech01/VenusBiblio-Updates/blob/main/docs/RELEASES_E_ATUALIZACOES.md">a política de atualizações</a> e <a href="https://github.com/IGETech01/VenusBiblio-Updates/actions/workflows/validar-release.yml">a validação de integridade</a>. O aplicativo está disponível oficialmente para Windows. Não existe APK Android disponível.</p>
+      <h2 id="links-heading">Ajuda e orientações</h2>
+      <p>Encontre orientações para instalar ou atualizar o VenusBiblio. O aplicativo está disponível para Windows. A versão Android ainda não está disponível.</p>
     </section>
   </main>
   <footer><div class="wrap">© IGETech · VenusBiblio. Arquivos oficiais hospedados no GitHub Releases.</div></footer>
@@ -101,8 +101,8 @@
         document.getElementById('notas').href = releaseUrl;
         document.getElementById('download').href = asset ? asset.browser_download_url : releaseUrl;
         document.getElementById('status').textContent = asset ?
-          'Instalador oficial Windows disponível. Consulte as notas e verifique a integridade da versão.' :
-          'Confira os arquivos disponíveis na página oficial do lançamento.';
+          'Instalador oficial disponível para Windows.' :
+          'Confira a versão mais recente na página de downloads.';
       } catch (_) { /* Exibe links estáveis caso a API esteja indisponível. */ }
     })();
   </script>
