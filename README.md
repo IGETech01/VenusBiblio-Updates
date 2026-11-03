@@ -36,7 +36,7 @@
 
 A [v0.15.1](docs/releases/v0.15.1.md) é a versão estável atual. As versões [v0.15.0](docs/releases/v0.15.0.md), [v0.14.1](docs/releases/v0.14.1.md) e [v0.14.0](docs/releases/v0.14.0.md) permanecem no histórico.
 
-Os instaladores oficiais são acompanhados de manifesto assinado digitalmente, e a [validação automática de integridade](.github/workflows/validar-release.yml) confere assinatura, tamanho e SHA-256 dos arquivos de distribuição.
+Os arquivos oficiais passam por verificações automáticas antes da distribuição. Saiba mais na [política de atualizações](docs/RELEASES_E_ATUALIZACOES.md).
 
 [Política pública de atualizações](docs/RELEASES_E_ATUALIZACOES.md) · [Histórico de downloads](https://github.com/IGETech01/VenusBiblio-Updates/releases)
 
