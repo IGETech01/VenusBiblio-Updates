@@ -10,8 +10,9 @@ Acesse sempre o endereço permanente:
 
 | Versão | Disponibilidade |
 |---|---|
-| [v0.14.1](https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.14.1) | Estável atual para Windows |
-| [v0.14.0](https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.14.0) | Versão estável anterior |
+| [v0.15.0](https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.15.0) | **Estável atual para Windows** · AuroraUI 1.3.0 |
+| [v0.14.1](https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.14.1) | Versão estável anterior |
+| [v0.14.0](https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.14.0) | Versão histórica |
 
 Versões antigas sem atualização integrada, como a linha v0.12.x, devem ser atualizadas manualmente.
 
