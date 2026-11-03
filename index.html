@@ -6,7 +6,15 @@
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#1d1d22">
   <meta name="description" content="Baixe o VenusBiblio by IGETech, biblioteca offline para Windows. Releases oficiais, integridade dos instaladores e guia de atualização.">
-  <title>VenusBiblio | Downloads oficiais da IGETech</title>
+  <link rel="canonical" href="https://igetech01.github.io/VenusBiblio-Updates/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="VenusBiblio | Sua biblioteca digital">
+  <meta property="og:description" content="Conheça o VenusBiblio, veja as telas reais e baixe sua biblioteca para Windows.">
+  <meta property="og:url" content="https://igetech01.github.io/VenusBiblio-Updates/">
+  <meta property="og:image" content="https://igetech01.github.io/VenusBiblio-Updates/demo/imagens/03_estante_grade.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>VenusBiblio | Sua biblioteca digital para Windows</title>
   <style>
     :root { font-family: system-ui,-apple-system,"Segoe UI",sans-serif; color:#f6f3ff; background:#1d1d22; color-scheme:dark }
     * { box-sizing:border-box } html { scroll-behavior:smooth } body { margin:0; line-height:1.65; background:radial-gradient(ellipse at 80% 0%,#3a2458 0%,transparent 38%),#1d1d22 }
@@ -38,49 +46,79 @@
     footer { padding:27px 0 40px; border-top:1px solid #ffffff20; color:#b9b0c4; font-size:.85rem }
     @media(max-width:700px) { .hero {padding-top:45px} .grid {grid-template-columns:1fr} .top {align-items:flex-start} .links {gap:14px} }
     @media(prefers-reduced-motion:reduce) { html {scroll-behavior:auto} .primary {transition:none} }
+    .hero-actions { display:flex; align-items:center; flex-wrap:wrap; gap:18px; margin-top:28px }
+    .hero-actions .outline { display:inline-flex; justify-content:center; align-items:center; text-decoration:none; border-radius:12px; padding:12px 23px; border:1px solid #815eb0; font-weight:720; color:#f1e6ff; background:#2b2337 }
+    .hero-actions .outline:hover { background:#3e2c52 }
+    .hero-preview { display:block; margin:34px 0 8px; border-radius:21px; overflow:hidden; border:1px solid #715593; background:#241b30; box-shadow:0 26px 56px #0b071b8c }
+    .hero-preview img { display:block; width:100%; height:auto }
+    .preview-note { margin:0 0 22px; color:#bcb1ce; font-size:.82rem }
+    .pill-list { display:flex; gap:10px; flex-wrap:wrap; margin:26px 0 0 }
+    .pill-list span { background:#30263f; border:1px solid #6e5485; border-radius:999px; padding:6px 12px; font-size:.85rem; color:#e2d4ef }
+    .help-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin-top:18px }
+    .help-card { border:1px solid #4c3d61; border-radius:15px; padding:20px; background:#292432 }
+    .help-card strong { display:block; margin-bottom:8px }
+    .help-card p { margin:0; color:#c9bfd3 }
+    .share-link { color:#e4cfff; word-break:break-word }
+    .faq details { background:#292631; border:1px solid #554764; border-radius:12px; margin:10px 0; padding:14px 18px }
+    .faq summary { cursor:pointer; font-weight:710 }
+    .faq p { margin:12px 0 0 }
+    @media(max-width:700px) { .help-grid { grid-template-columns:1fr } .hero-actions .primary, .hero-actions .outline { width:100% } .hero-actions { gap:10px } }
+    @media(prefers-reduced-motion:reduce) { .hero-actions .outline { transition:none } }
   </style>
 </head>
 <body>
   <header><nav class="wrap top" aria-label="Navegação principal">
     <a class="brand" href="#inicio">IGE<span>Tech</span> / VenusBiblio</a>
-    <div class="links"><a href="demo/">Ver demonstracao</a><a href="#baixar">Download</a><a href="#atualizar">Atualizar</a><a href="https://github.com/IGETech01/VenusBiblio-Updates/releases/latest">Última versão</a></div>
+    <div class="links"><a href="demo/">Conhecer o programa</a><a href="#recursos">Recursos</a><a href="#ajuda">Dúvidas</a><a href="baixar/">Baixar</a></div>
   </nav></header>
   <main id="inicio" class="wrap">
     <section class="hero">
       <p class="eyebrow">Biblioteca digital offline para Windows</p>
       <h1>Seu acervo, <span class="gradient">seu espaço.</span></h1>
-      <p class="intro">Organize livros, leia PDFs e EPUBs, acompanhe mangás e HQs em CBZ e personalize sua experiência de leitura. Distribuição oficial pela IGETech.</p>
+      <p class="intro">Organize seus livros, leia PDFs, EPUBs, quadrinhos e mangás. Tudo em uma biblioteca com visual moderno, feita para Windows e para acompanhar você mesmo sem internet.</p>
+      <div class="pill-list" aria-label="Destaques"><span>📚 Seus livros em um lugar</span><span>🎨 14 temas</span><span>📖 Leitura offline</span></div>
+      <div class="hero-actions"><a class="primary" href="#baixar">⬇ Baixar para Windows</a><a class="outline" href="demo/">📸 Ver o programa por dentro</a></div>
+      <a class="hero-preview" href="demo/" aria-label="Abrir a galeria de demonstração"><img src="demo/imagens/03_estante_grade.png" width="1920" height="1080" alt="Imagem real do VenusBiblio com estante de livros organizada por capas"></a>
+      <p class="preview-note">Imagem do programa real em modo de demonstração, com livros fictícios.</p>
     </section>
     <section class="panel" id="baixar" aria-labelledby="release-heading">
       <div class="release-top"><span class="tag">Última versão estável</span><span class="pill">Windows</span></div>
       <h2 id="release-heading">VenusBiblio <span id="versao">v0.15.0</span></h2>
-      <p class="muted" id="status">Instalador para Windows disponível para download.</p>
+      <p class="muted" id="status">Instalador oficial para Windows disponível para download.</p>
       <div class="actions">
         <a class="primary" id="download" href="https://github.com/IGETech01/VenusBiblio-Updates/releases/download/v0.15.0/VenusBiblio_Setup_0.15.0.exe">Baixar VenusBiblio</a>
         <a class="secondary" id="notas" href="https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.15.0">Notas da versão</a>
       </div>
-      <p class="muted"><small>Feche o aplicativo antes de atualizar e mantenha uma cópia de segurança dos seus dados. Nenhum APK Android está disponível.</small></p>
+      <p class="muted"><small>Para instalar ou atualizar, feche o VenusBiblio antes de executar o instalador. Sua biblioteca pessoal merece sempre uma cópia de segurança.</small></p>
+      <p class="muted"><small>Quer compartilhar com alguém? Use o <a class="share-link" href="baixar/">link simples de download</a>.</small></p>
     </section>
-    <section aria-label="Destaques" class="grid">
+    <section id="recursos" aria-label="Destaques" class="grid">
       <article class="tile"><h3>📚 Leitura offline</h3><p>PDF, EPUB, mangás e histórias em quadrinhos em CBZ.</p></article>
-      <article class="tile"><h3>🎨 AuroraUI 1.3.0</h3><p>14 temas visuais, personalização da leitura e organização do acervo.</p></article>
-      <article class="tile"><h3>🔐 Atualizações verificadas</h3><p>Baixe e atualize com segurança usando os arquivos oficiais.</p></article>
+      <article class="tile"><h3>🎨 Do seu jeito</h3><p>14 temas para deixar sua estante com a sua cara.</p></article>
+      <article class="tile"><h3>🌐 Workshop Cliente</h3><p>Descubra coleções disponíveis quando estiver conectado.</p></article>
+    </section>
+    <section class="section" id="comecar">
+      <h2>Como começar</h2>
+      <div class="help-grid">
+        <div class="help-card"><strong>1. Baixe</strong><p>Clique em “Baixar VenusBiblio” e salve o instalador no computador.</p></div>
+        <div class="help-card"><strong>2. Instale</strong><p>Execute o arquivo no Windows e siga as instruções na tela.</p></div>
+        <div class="help-card"><strong>3. Leia</strong><p>Abra o programa, crie seu acesso local e organize seus livros.</p></div>
+      </div>
     </section>
     <section class="section" id="atualizar">
-      <h2>Como atualizar</h2>
-      <ol>
-        <li><strong>Versões com atualizador integrado:</strong> acesse <strong>Atualizações → Verificar atualizações</strong>. Se houver falha, use o instalador oficial acima.</li>
-        <li><strong>Versões antigas sem atualizador, incluindo v0.12.x:</strong> faça a atualização <strong>manualmente</strong> pelo instalador mais recente. Aquelas versões não recebem atualização automática pelo GitHub.</li>
-        <li>Abra a nova versão e confira seus livros, contas e preferências.</li>
-      </ol>
-      <div class="notice">Para sua segurança, utilize somente o <strong>instalador oficial da última versão estável</strong>. Versões antigas sem atualizador integrado exigem instalação manual.</div>
+      <h2>Já tem o VenusBiblio?</h2>
+      <p>Em versões com atualização integrada, abra <strong>Atualizações → Verificar atualizações</strong>. Se não encontrar essa opção, basta baixar o instalador mais recente nesta página.</p>
+      <div class="notice">Antes de atualizar, feche o aplicativo e mantenha uma cópia de segurança dos seus livros.</div>
     </section>
-    <section class="section" aria-labelledby="links-heading">
-      <h2 id="links-heading">Ajuda e orientações</h2>
-      <p>Encontre orientações para instalar ou atualizar o VenusBiblio. O aplicativo está disponível para Windows. A versão Android ainda não está disponível.</p>
+    <section class="section faq" id="ajuda" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">Dúvidas frequentes</h2>
+      <details><summary>Preciso de internet para ler meus livros?</summary><p>Não. Depois de adicionar seus arquivos à biblioteca, você pode ler offline. A internet é usada para baixar o aplicativo, acessar coleções online ou verificar atualizações.</p></details>
+      <details><summary>Quais tipos de arquivo posso ler?</summary><p>O VenusBiblio oferece leitura de PDF, EPUB, histórias em quadrinhos e mangás no formato CBZ.</p></details>
+      <details><summary>Tem versão para Android?</summary><p>Ainda não. A versão disponível para download é para Windows.</p></details>
+      <details><summary>Posso ver o programa antes de instalar?</summary><p>Sim. Acesse a <a href="demo/">galeria de demonstração</a> para conhecer as telas reais do VenusBiblio.</p></details>
     </section>
   </main>
-  <footer><div class="wrap">© IGETech · VenusBiblio. Arquivos oficiais hospedados no GitHub Releases.</div></footer>
+  <footer><div class="wrap">© IGETech · VenusBiblio. <a href="demo/">Ver demonstração</a> · <a href="baixar/">Baixar para Windows</a>.</div></footer>
   <script>
     // O site apenas consulta a API pública do GitHub. Não modifica releases nem assets.
     (async function () {
@@ -101,7 +139,7 @@
         document.getElementById('notas').href = releaseUrl;
         document.getElementById('download').href = asset ? asset.browser_download_url : releaseUrl;
         document.getElementById('status').textContent = asset ?
-          'Instalador oficial disponível para Windows.' :
+          'Pronto para baixar no Windows.' :
           'Confira a versão mais recente na página de downloads.';
       } catch (_) { /* Exibe links estáveis caso a API esteja indisponível. */ }
     })();

@@ -2,9 +2,11 @@
 
 **Sua biblioteca digital offline para Windows.** Organize livros, leia PDFs e EPUBs e aproveite mangás e HQs em CBZ, com opções de personalização e acesso ao Workshop Cliente.
 
-## Baixar o VenusBiblio
+## Conheça e baixe o VenusBiblio
 
-**[⬇️ Baixar a versão estável mais recente](https://github.com/IGETech01/VenusBiblio-Updates/releases/latest)**
+**[⬇️ Baixar VenusBiblio](https://igetech01.github.io/VenusBiblio-Updates/baixar/)** · **[📸 Ver o aplicativo por dentro](https://igetech01.github.io/VenusBiblio-Updates/demo/)** · **[🌐 Site oficial](https://igetech01.github.io/VenusBiblio-Updates/)**
+
+[Todos os lançamentos oficiais](https://github.com/IGETech01/VenusBiblio-Updates/releases/latest)
 
 - **Versão disponível:** [v0.15.0](https://github.com/IGETech01/VenusBiblio-Updates/releases/tag/v0.15.0).
 - **Sistema:** Windows.
